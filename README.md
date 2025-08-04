@@ -32,12 +32,12 @@ The last issue is the structure of the date for the timestamp. Even with this to
 
 **Question 3.** 
 
-Prompt user to "Enter a date (YYYY-MM-DD)"
-Store input in variable dateInput
+    Prompt user to "Enter a date (YYYY-MM-DD)"
+    Store input in variable dateInput
 
-Create dateObj as a new Date object using dateInput
+    Create dateObj as a new Date object using dateInput
 
-If dateObj is a valid date:
+    If dateObj is a valid date:
     Set T to "T"
     Set Z to "Z"
     
