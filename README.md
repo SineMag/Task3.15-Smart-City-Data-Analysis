@@ -32,39 +32,39 @@ The last issue is the structure of the date for the timestamp. Even with this to
 
 **Question 3.** 
 
-    let dateInput = prompt("Enter a date (YYYY-MM-DD): ");
+Prompt user to "Enter a date (YYYY-MM-DD)"
+Store input in variable dateInput
 
-    let dateObj = new Date(dateInput);
+Create dateObj as a new Date object using dateInput
 
-    if (!isNaN(dateObj.getTime())) {
+If dateObj is a valid date:
+    Set T to "T"
+    Set Z to "Z"
     
-    let T = "T";
-    let Z = "Z";
+    Extract day from dateObj
+    If day < 10, prepend "0" to day
 
-    
-    let day = dateObj.getDate();
-    day = day < 10 ? "0" + day : day;
+    Extract month from dateObj (add 1 since months are 0-based)
+    If month < 10, prepend "0" to month
 
-    let month = dateObj.getMonth() + 1;
-    month = month < 10 ? "0" + month : month;
+    Extract year from dateObj
 
-    let year = dateObj.getFullYear();
+    Extract hour from dateObj
+    If hour < 10, prepend "0" to hour
 
-    
-    let hour = dateObj.getHours();
-    hour = hour < 10 ? "0" + hour : hour;
+    Extract minute from dateObj
+    If minute < 10, prepend "0" to minute
 
-    let minute = dateObj.getMinutes();
-    minute = minute < 10 ? "0" + minute : minute;
+    Extract second from dateObj
+    If second < 10, prepend "0" to second
 
-    let second = dateObj.getSeconds();
-    second = second < 10 ? "0" + second : second;
+    Concatenate year, "-", month, "-", day, T, hour, ":", minute, ":", second, Z
+    Store in resultDate
 
-    let resultDate = `${year}-${month}-${day}${T}${hour}:${minute}:${second}${Z}`;
-    console.log(resultDate);
-    } else {
-    console.log("Invalid date format.");
-    }
+    Output resultDate
+Else:
+    Output "Invalid date format."
+
 
 
 # **Task 3: Data Governance & Security**
@@ -78,7 +78,7 @@ The last issue is the structure of the date for the timestamp. Even with this to
     "timestamp": "2025-07-29T08:45:10Z",
     "location": { "latitude": -26.2253, "longitude": 28.1613 },
     "data": { "type": "air_quality", "value": 45.5, "unit": "AQI" },
-    "data_source_veracity": 0.95
+    "data_source_veracity": 0.95,
     "system_and_data_access": "Public"
   },    
 
@@ -88,7 +88,7 @@ The last issue is the structure of the date for the timestamp. Even with this to
     "timestamp": "2025-07-29T08:46:15Z",
     "location": { "latitude": -26.2260, "longitude": 28.1620 },
     "data": { "type": "traffic_count", "value": 152, "unit": "vehicles_per_minute" },
-    "data_source_veracity": null
+    "data_source_veracity": null,
     "system_and_data_access": "Public"
   },
 
@@ -98,7 +98,7 @@ The last issue is the structure of the date for the timestamp. Even with this to
     "timestamp": "29/07/2025 08:47:00",
     "location": { "latitude": -26.2255, "longitude": 28.1615 },
     "data": { "type": "temperature", "value": "16.2C", "unit": "celsius" },
-    "data_source_veracity": 0.80
+    "data_source_veracity": 0.80,
     "system_and_data_access": "Public"
   },
 
@@ -108,7 +108,7 @@ The last issue is the structure of the date for the timestamp. Even with this to
     "timestamp": "2025-07-29T08:50:05Z",
     "location": { "latitude": -26.2253, "longitude": 28.1613 },
     "data": { "type": null, "value": 48.0, "unit": "AQI" },
-    "data_source_veracity": 0.95
+    "data_source_veracity": 0.95,
     "system_and_data_access": "Private"
   },
 
@@ -118,7 +118,7 @@ The last issue is the structure of the date for the timestamp. Even with this to
     "timestamp": "2025-07-29T08:52:30Z",
     "location": { "latitude": -26.2271, "longitude": 28.1633 },
     "data": { "type": "noise_level", "value": 65, "unit": "dB" },
-    "data_source_veracity": 0.99
+    "data_source_veracity": 0.99,
     "system_and_data_access": "Public"
   },
 
@@ -128,7 +128,7 @@ The last issue is the structure of the date for the timestamp. Even with this to
     "timestamp": "2025-07-29T08:55:01Z",
     "location": { "latitude": -26.2260, "longitude": 28.1620 },
     "data": { "type": "traffic_count", "value": null, "unit": "vehicles_per_minute" },
-    "data_source_veracity": 0.91
+    "data_source_veracity": 0.91,
     "system_and_data_access": "Public"
   },
 
@@ -138,7 +138,7 @@ The last issue is the structure of the date for the timestamp. Even with this to
     "timestamp": "2025-07-29T08:58:45Z",
     "location": { "latitude": -26.2258, "longitude": 28.1618 },
     "data": { "type": "humidity", "value": 34.8, "unit": "%" },
-    "data_source_veracity": 0.98
+    "data_source_veracity": 0.98,
     "system_and_data_access": "Private"
   },
 
@@ -147,8 +147,8 @@ The last issue is the structure of the date for the timestamp. Even with this to
     "sensor_id": "TEMP-02-GER",
     "timestamp": "2025-07-29T09:01:00Z",
     "location": { "latitude": -26.2255, "longitude": 28.1615 },
-    "data": { "type": "temperature", "value": 17.1, "unit": "celsius" }
-    "system_and_data_access": "Private"
+    "data": { "type": "temperature", "value": 17.1, "unit": "celsius","system_and_data_access": "Private" }
+    
   },
 
 
@@ -157,7 +157,7 @@ The last issue is the structure of the date for the timestamp. Even with this to
     "timestamp": "2025-07-29T09:05:15Z",
     "location": { "latitude": -26.2253, "longitude": 28.1613 },
     "data": { "type": "air_quality", "value": -10, "unit": "AQI" },
-    "data_source_veracity": 0.75
+    "data_source_veracity": 0.75,
     "system_and_data_access": "Restricted"
   },
 
@@ -167,7 +167,7 @@ The last issue is the structure of the date for the timestamp. Even with this to
     "timestamp": "2025-07-29T09:08:00Z",
     "location": { "latitude": -26.2271, "longitude": 28.1633 },
     "data": { "type": "noise_level", "value": 70, "unit": "dB" },
-    "data_source_veracity": 0.99
+    "data_source_veracity": 0.99,
     "system_and_data_access": "Private"
   },
 
@@ -177,7 +177,7 @@ The last issue is the structure of the date for the timestamp. Even with this to
     "timestamp": "2025-07-29T09:10:00Z",
     "location": { "latitude": -26.2280, "longitude": 28.1640 },
     "data": { "type": "rainfall", "value": "false", "unit": "boolean" },
-    "data_source_veracity": 1.0
+    "data_source_veracity": 1.0,
     "system_and_data_access": "Restricted"
   },
 
@@ -187,7 +187,7 @@ The last issue is the structure of the date for the timestamp. Even with this to
     "timestamp": "July 29 2025, 09:15:03 AM",
     "location": { "latitude": -26.2291, "longitude": 28.1652 },
     "data": { "type": "traffic_count", "value": 98, "unit": "vehicles_per_minute" },
-    "data_source_veracity": 0.88
+    "data_source_veracity": 0.88,
     "system_and_data_access": "Private"
   }
 ]
